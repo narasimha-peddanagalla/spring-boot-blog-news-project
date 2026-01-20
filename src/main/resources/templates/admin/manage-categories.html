@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/admin-layout}">
+<head><title>Manage Categories</title></head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h3 class="fw-bold mb-3">Manage Categories</h3>
+
+    <form class="row g-2 mb-3" method="post" th:action="@{/admin/add-category}">
+        <div class="col-auto">
+            <input class="form-control" name="name" placeholder="Category name" required>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary">Add Category</button>
+        </div>
+    </form>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <tr><th>ID</th><th>Name</th><th>Description</th><th>Actions</th></tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="c : ${categories}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.name}"></td>
+            <td th:text="${c.description}"></td>
+            <td>
+                <a class="btn btn-warning btn-sm"
+                   th:href="@{'/admin/edit-category/' + ${c.id}}">Edit</a>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/admin/delete-category/' + ${c.id}}"
+                   onclick="return confirm('Delete?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

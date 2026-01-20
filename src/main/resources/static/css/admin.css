@@ -1,0 +1,37 @@
+/* ================================
+   FIX: SIDEBAR + NAVBAR OVERLAP
+================================ */
+
+#sidebar-wrapper,
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* MAIN CONTENT SHOULD START AFTER SIDEBAR */
+#content-wrapper {
+    margin-left: 240px !important;
+    padding-top: 80px !important;   /* space for navbar */
+}
+
+/* FIX NAVBAR */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 240px;
+    width: calc(100% - 240px);
+    z-index: 999;
+}
+
+/* GENERAL CLEANUP */
+body {
+    overflow-x: hidden;
+    background: #f8f9fa;
+}
+
+.card {
+    border-radius: 10px;
+}

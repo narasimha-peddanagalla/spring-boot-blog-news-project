@@ -1,0 +1,26 @@
+<div th:fragment="topbar">
+
+    <nav class="navbar navbar-expand navbar-light bg-white topbar shadow mb-4 px-3">
+
+        <button class="btn btn-outline-secondary d-md-none me-3" data-bs-toggle="collapse" data-bs-target="#accordionSidebar">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <span class="fw-bold ms-2">
+            Welcome <span th:text="${session.loggedInUser.username}">Admin</span>
+        </span>
+
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fas fa-user-circle fa-lg"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+
+</div>

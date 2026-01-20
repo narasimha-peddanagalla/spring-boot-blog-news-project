@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/admin-layout}">
+<head><title>Edit Post</title></head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h3 class="fw-bold mb-4">Edit Post</h3>
+
+    <form th:action="@{/admin/update-post}" th:object="${post}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label>Title</label>
+            <input class="form-control" th:field="*{title}">
+        </div>
+
+        <div class="mb-3">
+            <label>Category</label>
+            <select class="form-select" name="categoryId">
+                <option th:each="c : ${categories}"
+                        th:value="${c.id}"
+                        th:selected="${c.id == post.category.id}"
+                        th:text="${c.name}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>Image URL</label>
+            <input class="form-control" th:field="*{imageUrl}">
+        </div>
+
+        <div class="mb-3">
+            <label>Content</label>
+            <textarea class="form-control" rows="6" th:field="*{content}"></textarea>
+        </div>
+
+        <button class="btn btn-primary">Update</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

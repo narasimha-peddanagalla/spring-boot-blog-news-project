@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="${post.title}">Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div th:replace="fragments/home-navbar :: home-navbar"></div>
+
+<div class="container mt-5">
+
+    <h1 class="fw-bold mb-3" th:text="${post.title}"></h1>
+
+    <p class="text-muted">
+        <span th:text="${post.category.name}"></span> |
+        <span th:text="${post.user.username}"></span> |
+        <span th:text="${#temporals.format(post.createdAt, 'dd MMM yyyy HH:mm')}"></span>
+    </p>
+
+    <img th:if="${post.imageUrl}"
+         th:src="${post.imageUrl}"
+         class="img-fluid rounded mb-4"/>
+
+    <p th:utext="${post.content}" style="font-size:18px; line-height:1.7;"></p>
+
+</div>
+
+<div th:replace="fragments/home-footer :: home-footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/admin-layout}">
+<head><title>Add Category</title></head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h3 class="fw-bold mb-4">Add Category</h3>
+
+    <form th:action="@{/admin/add-category}" method="post">
+
+        <div class="mb-3">
+            <label>Name</label>
+            <input class="form-control" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Description</label>
+            <textarea class="form-control" name="description"></textarea>
+        </div>
+
+        <button class="btn btn-success">Save</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

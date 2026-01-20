@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/admin-layout}">
+<head><title>Manage Posts</title></head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h3 class="fw-bold mb-3">Manage Posts</h3>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th><th>Title</th><th>Author</th><th>Category</th>
+            <th>Created</th><th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="p : ${posts}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.title}"></td>
+            <td th:text="${p.user != null ? p.user.username : 'N/A'}"></td>
+            <td th:text="${p.category != null ? p.category.name : 'N/A'}"></td>
+            <td th:text="${p.createdAt}"></td>
+
+            <td>
+                <a class="btn btn-warning btn-sm" th:href="@{'/admin/edit-post/' + ${p.id}}">Edit</a>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/admin/delete-post/' + ${p.id}}"
+                   onclick="return confirm('Delete post?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

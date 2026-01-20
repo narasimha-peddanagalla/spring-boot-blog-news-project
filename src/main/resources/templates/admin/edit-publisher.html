@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/admin-layout}">
+<head><title>Edit Publisher</title></head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h3 class="fw-bold mb-3">Edit Publisher</h3>
+
+    <form th:action="@{/admin/update-publisher}" th:object="${publisher}" method="post">
+
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label>Username</label>
+            <input class="form-control" th:field="*{username}">
+        </div>
+
+        <div class="mb-3">
+            <label>Full Name</label>
+            <input class="form-control" th:field="*{fullName}">
+        </div>
+
+        <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" th:field="*{email}">
+        </div>
+
+        <div class="mb-3">
+            <label>Role</label>
+            <select class="form-control" th:field="*{role}">
+                <option value="PUBLISHER">Publisher</option>
+                <option value="ADMIN">Admin</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary">Update</button>
+        <a class="btn btn-secondary" th:href="@{/admin/manage-publishers}">Cancel</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

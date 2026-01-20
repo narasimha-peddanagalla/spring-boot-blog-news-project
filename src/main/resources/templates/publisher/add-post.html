@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <a class="navbar-brand fw-bold text-white">Publisher Panel</a>
+
+    <div class="ms-auto text-white">
+        <a th:href="@{/logout}" class="text-warning text-decoration-none">Logout</a>
+    </div>
+</nav>
+<!--======================================== -->
+
+<div class="container mt-5">
+
+    <!-- Heading + Return button in same row -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold m-0">Add New Post</h1>
+
+        <a class="btn btn-primary" href="/publisher/dashboard">
+            Return to Dashboard
+        </a>
+    </div>
+
+
+
+    <form th:action="@{/publisher/add-post}" method="post">
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Title</label>
+            <input class="form-control" name="title" required/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Category</label>
+            <select class="form-select" name="categoryId" required>
+                <option value="">Select Category</option>
+
+                <option th:each="c : ${categories}"
+                        th:value="${c.id}"
+                        th:text="${c.name}">
+                </option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Image URL</label>
+            <input class="form-control" name="imageUrl"/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bold">Content</label>
+            <textarea class="form-control" rows="8" name="content" required></textarea>
+        </div>
+
+        <button class="btn btn-primary">Publish</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

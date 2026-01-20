@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/layout/admin-layout}">
+
+<head>
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <h3 class="fw-bold mb-4">Admin Dashboard</h3>
+
+    <!-- ROW 1 – COUNTERS -->
+    <div class="row g-3">
+
+        <!-- TOTAL PUBLISHERS -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h6 class="text-muted">Total Publishers</h6>
+                <h1 class="fw-bold" th:text="${authorCount}">0</h1>
+            </div>
+        </div>
+
+        <!-- TOTAL POSTS -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h6 class="text-muted">Total Posts</h6>
+                <h1 class="fw-bold" th:text="${postCount}">0</h1>
+            </div>
+        </div>
+
+        <!-- TOTAL CATEGORIES -->
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h6 class="text-muted">Total Categories</h6>
+                <h1 class="fw-bold" th:text="${categoryCount}">0</h1>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ROW 2 – ADD POST -->
+    <div class="row g-3 mt-2">
+        <div class="col-md-3">
+            <div class="card text-center shadow-sm p-3">
+                <h6 class="text-muted">Add New Post</h6>
+                <a th:href="@{/admin/add-post}" class="btn btn-primary mt-2">
+                    Add Post
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Manage Publishers</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <h3>Manage Publishers</h3>
+
+    <a href="/admin/dashboard" class="btn btn-secondary btn-sm mb-3">← Back</a>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Posts</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="u : ${publishers}">
+            <td th:text="${u.id}"></td>
+            <td th:text="${u.fullName}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.username}"></td>
+            <td th:text="${u.password}"></td>
+            <td th:text="${u.posts.size()}"></td>
+
+            <td>
+                <a th:href="@{/admin/edit-author/{id}(id=${u.id})}"
+                   class="btn btn-warning btn-sm">Edit</a>
+
+                <a th:href="@{/admin/delete-author/{id}(id=${u.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Delete this publisher?')">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
